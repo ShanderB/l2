@@ -1,15 +1,32 @@
-<h1>Cadastro de Jogo</h1>
-<form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
-    <label for="nome">Nome:</label>
-    <input formControlName="name" placeholder="Nome" />
-    <label for="preco">Preço:</label>
-    <input formControlName="price" placeholder="Preço" />
-    <label for="dimensao">Dimensão da Caixa:</label>
-    <input formControlName="boxSize" placeholder="Dimensão da Caixa" />
-    <label for="descricao">Descrição:</label>
-    <textarea formControlName="description" placeholder="Descrição"></textarea>
-    <label for="imagem">Imagem da Capa:</label>
-    <input formControlName="coverImage" placeholder="Imagem da Capa" />
-    <button type="submit">Cadastrar Jogo</button>
+<h1 class="text-3xl font-bold mb-6">Cadastro de Jogo</h1>
+<form [formGroup]="gameForm" (ngSubmit)="onSubmit()" class="bg-white shadow-md rounded-lg p-6 mb-6">
+    <div class="mb-4">
+        <label for="nome" class="block text-gray-700 text-sm font-bold mb-2">Nome:</label>
+        <input formControlName="name" placeholder="Nome"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+    <div class="mb-4">
+        <label for="preco" class="block text-gray-700 text-sm font-bold mb-2">Preço:</label>
+        <input formControlName="price" placeholder="Preço"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+    <div class="mb-4">
+        <label for="dimensao" class="block text-gray-700 text-sm font-bold mb-2">Dimensão da Caixa:</label>
+        <input formControlName="boxSize" placeholder="Dimensão da Caixa"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+    <div class="mb-4">
+        <label for="descricao" class="block text-gray-700 text-sm font-bold mb-2">Descrição:</label>
+        <textarea formControlName="description" placeholder="Descrição"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+    </div>
+    <div class="mb-4">
+        <label for="imagem" class="block text-gray-700 text-sm font-bold mb-2">Imagem da Capa:</label>
+        <input formControlName="coverImage" placeholder="Imagem da Capa"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    </div>
+    <button type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cadastrar
+        Jogo</button>
 </form>
-<a routerLink="/">Voltar para Vitrine</a>
+<a routerLink="/" class="text-blue-500 hover:underline">Voltar para Vitrine</a>
