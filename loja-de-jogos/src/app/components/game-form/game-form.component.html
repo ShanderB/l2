@@ -1,8 +1,13 @@
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+    <label for="nome">Nome:</label>
     <input formControlName="name" placeholder="Nome" />
+    <label for="preco">Preço:</label>
     <input formControlName="price" placeholder="Preço" />
+    <label for="dimensao">Dimensão da Caixa:</label>
     <input formControlName="boxSize" placeholder="Dimensão da Caixa" />
+    <label for="descricao">Descrição:</label>
     <textarea formControlName="description" placeholder="Descrição"></textarea>
+    <label for="imagem">Imagem da Capa:</label>
     <input formControlName="coverImage" placeholder="Imagem da Capa" />
     <button type="submit">Cadastrar Jogo</button>
 </form>
