@@ -1,9 +1,19 @@
 <h1 class="text-3xl font-bold mb-6">Vitrine de Jogos</h1>
-<div *ngFor="let game of games" class="game-card bg-white shadow-md rounded-lg p-6 mb-6">
-    <img [src]="game.coverImage" alt="{{ game.name }}" class="w-full h-auto rounded-lg mb-4">
-    <h2 class="text-2xl font-semibold mb-2">{{ game.name }}</h2>
-    <p class="text-gray-700 mb-2">{{ game.description }}</p>
-    <p class="text-lg font-bold mb-2">Preço: {{ game.price | currency:'BRL' }}</p>
-    <p class="text-gray-600">Dimensão da Caixa: {{ game.boxSize }}</p>
-</div>
+<button (click)="toggleSelectionMode()" class="text-blue-500 hover:underline mb-4">
+    {{ isSelectionMode ? 'Cancelar' : 'Enviar produtos' }}
+</button>
+<form [formGroup]="gameForm" (ngSubmit)="sendToBoxCalculator()">
+    <div *ngFor="let game of games; let i = index" class="game-card bg-white shadow-md rounded-lg p-6 mb-6">
+        <img [src]="game.coverImage" alt="{{ game.name }}" class="w-full h-auto rounded-lg mb-4">
+        <h2 class="text-2xl font-semibold mb-2">{{ game.name }}</h2>
+        <p class="text-gray-700 mb-2">{{ game.description }}</p>
+        <p class="text-lg font-bold mb-2">Preço: {{ game.price | currency:'BRL' }}</p>
+        <p class="text-gray-600">Dimensão da Caixa: {{ game.boxHeight }} x {{ game.boxWidth }} x {{ game.boxLength }}
+        </p>
+        <div *ngIf="isSelectionMode">
+            <input type="checkbox" [value]="game" (change)="onCheckboxChange( game, $event)">
+        </div>
+    </div>
+    <button *ngIf="isSelectionMode" type="submit" class="text-blue-500 hover:underline">Finalizar envio</button>
+</form>
 <a routerLink="/add-game" class="text-blue-500 hover:underline">Adicionar Novo Jogo</a>
