@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GameUseCase } from '../../use-cases/game/game.use-case';
+import { AvailableBoxes } from '../../entities/available-boxes';
+import { Game } from '../../entities/game';
 
 @Component({
     selector: 'app-game-form',
@@ -12,11 +14,13 @@ export class GameFormComponent {
 
     constructor(private fb: FormBuilder, private gameUseCase: GameUseCase) {
         this.gameForm = this.fb.group({
-            name: [''],
-            price: [''],
-            boxSize: [''],
+            name: ['', Validators.required],
+            price: ['', Validators.required],
+            boxLength: ['', Validators.required],
+            boxWidth: ['', Validators.required],
+            boxHeight: ['', Validators.required],
             description: [''],
-            coverImage: ['']
+            coverImage: [''],
         });
     }
 
