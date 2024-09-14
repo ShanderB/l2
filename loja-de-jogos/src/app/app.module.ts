@@ -14,12 +14,14 @@ import { MainPageComponent } from './components/main/main-page.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { GameService } from './services/game-service';
+import { BoxCalculatorComponent } from './components/box-calculator/box-calculator.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         GameFormComponent,
-        MainPageComponent
+        MainPageComponent,
+        BoxCalculatorComponent
     ],
     imports: [
         BrowserModule,
