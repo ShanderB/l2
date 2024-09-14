@@ -10,20 +10,26 @@ import { GameFormComponent } from './components/game-form/game-form.component';
 import { gameReducer } from './store/reducers/game.reducer';
 import { GameEffects } from './store/effects/game.effects';
 import { GameUseCase } from './use-cases/game/game.use-case';
+import { MainPageComponent } from './components/main/main-page.component';
+import { routes } from './app.routes';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
         AppComponent,
-        GameFormComponent
+        GameFormComponent,
+        MainPageComponent
     ],
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         StoreModule.forRoot({ game: gameReducer }),
         EffectsModule.forRoot([GameEffects]),
-        StoreDevtoolsModule.instrument({ maxAge: 25 })
+        StoreDevtoolsModule.instrument({ maxAge: 25 }),
+        RouterModule.forRoot(routes)
     ],
     providers: [GameUseCase, GameEffects],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: [RouterModule]
 })
 export class AppModule { }

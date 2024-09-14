@@ -1,3 +1,4 @@
+<h1>Cadastro de Jogo</h1>
 <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
     <label for="nome">Nome:</label>
     <input formControlName="name" placeholder="Nome" />
@@ -11,3 +12,4 @@
     <input formControlName="coverImage" placeholder="Imagem da Capa" />
     <button type="submit">Cadastrar Jogo</button>
 </form>
+<a routerLink="/">Voltar para Vitrine</a>
