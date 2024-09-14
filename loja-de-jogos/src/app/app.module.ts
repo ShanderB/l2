@@ -13,7 +13,7 @@ import { GameUseCase } from './use-cases/game/game.use-case';
 import { MainPageComponent } from './components/main/main-page.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
-import { GameService } from './services/services';
+import { GameService } from './services/game-service';
 
 @NgModule({
     declarations: [
