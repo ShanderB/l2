@@ -1,8 +1,10 @@
 export interface Game {
     id?: string;
     name: string;
-    price: number;
-    boxSize: string;
-    description: string;
-    coverImage: string;
+    price?: number;
+    boxHeight: number;
+    boxWidth: number;
+    boxLength: number;
+    description?: string;
+    coverImage?: string;
 }
