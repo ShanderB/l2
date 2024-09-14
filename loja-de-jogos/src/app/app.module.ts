@@ -13,6 +13,7 @@ import { GameUseCase } from './use-cases/game/game.use-case';
 import { MainPageComponent } from './components/main/main-page.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
+import { GameService } from './services';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,7 @@ import { RouterModule } from '@angular/router';
         StoreDevtoolsModule.instrument({ maxAge: 25 }),
         RouterModule.forRoot(routes)
     ],
-    providers: [GameUseCase, GameEffects],
+    providers: [GameUseCase, GameEffects, GameService],
     bootstrap: [AppComponent],
     exports: [RouterModule]
 })

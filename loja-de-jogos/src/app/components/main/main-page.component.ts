@@ -1,8 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameService } from '../../services';
+import { Game } from '../../entities/game';
 
 @Component({
-    selector: 'app-main',
+    selector: 'app-main-page',
     templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
+    games: Game[] = [];
+
+    constructor(private gameService: GameService) { }
+
+    ngOnInit(): void {
+        this.games = this.gameService.getGames();
+    }
 }
