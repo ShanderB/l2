@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { map, mergeMap } from 'rxjs/operators';
 import { GameUseCase } from '../../use-cases/game/game.use-case';
-import { addGame, loadGames, loadGamesSuccess } from '../actions/game.actions';
-import { mergeMap, map } from 'rxjs/operators';
+import { loadGames, loadGamesSuccess, addGame } from '../actions/game.actions';
 
 @Injectable()
 export class GameEffects {
+    constructor(
+        private actions$: Actions,
+        private gameUseCase: GameUseCase
+    ) { }
+
     loadGames$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadGames),
@@ -23,9 +28,4 @@ export class GameEffects {
             ))
         )
     );
-
-    constructor(
-        private actions$: Actions,
-        private gameUseCase: GameUseCase
-    ) { }
 }

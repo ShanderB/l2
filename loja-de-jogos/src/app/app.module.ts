@@ -23,7 +23,7 @@ import { GameUseCase } from './use-cases/game/game.use-case';
         EffectsModule.forRoot([GameEffects]),
         StoreDevtoolsModule.instrument({ maxAge: 25 })
     ],
-    providers: [GameUseCase],
+    providers: [GameUseCase, GameEffects],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
