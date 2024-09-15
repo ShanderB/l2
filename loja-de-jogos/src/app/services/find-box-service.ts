@@ -1,11 +1,11 @@
 import { AvailableBoxes } from "../entities/available-boxes";
 import { Game } from "../entities/game";
 
-export function getBestBoxForDelivery(deliveries: Game[][], availableBoxes: AvailableBoxes[]): (AvailableBoxes | AvailableBoxes[])[] {
-    return deliveries.map(products => findBestBox(products, availableBoxes));
+export function getBestBoxForDelivery(games: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
+   return findBestBox(games, availableBoxes)
 }
 
-function findBestBox(products: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes | AvailableBoxes[] {
+function findBestBox(products: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
     let totalHeight = 0;
     let totalWidth = 0;
     let totalLength = 0;
@@ -49,6 +49,7 @@ function findMultipleBoxes(products: Game[], availableBoxes: AvailableBoxes[]): 
         }
 
         if (!boxFound) {
+  //TODO adicionar um erro caso a caixa seja muito grande.
             throw new Error(`Não foi encontrado uma caixa capaz de acomodar o produto ${product.name}`);
         }
     });

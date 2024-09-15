@@ -26,6 +26,5 @@ export class GameFormComponent {
 
     onSubmit() {
         this.gameUseCase.addGame(this.gameForm.value).subscribe();
-        console.log(this.gameForm.value);
     }
 }

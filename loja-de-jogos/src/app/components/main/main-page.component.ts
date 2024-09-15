@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameService } from '../../services/game-service';
 import { Game } from '../../entities/game';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BoxCalculatorService } from '../box-calculator/box-calculator.service';
 
 @Component({
     selector: 'app-main-page',
@@ -14,7 +15,7 @@ export class MainPageComponent implements OnInit {
     isSelectionMode: boolean = true;
     selectedGames: string[] = [];
 
-    constructor(private readonly gameService: GameService, private readonly fb: FormBuilder) {
+    constructor(private readonly gameService: GameService, private readonly fb: FormBuilder, private readonly boxCalculator: BoxCalculatorService) {
         this.gameForm = this.fb.group({
             id: [''],
             name: ['', Validators.required],
@@ -48,15 +49,14 @@ export class MainPageComponent implements OnInit {
             const index = this.selectedGames.findIndex(x => x === game.id);
             this.selectedGames.splice(index, 1);
         }
-
-        console.log(this.selectedGames);
-
     }
 
     sendToBoxCalculator(): void {
-        // const selectedGames = this.selectedGamesForm.value.selectedGames;
-        // console.log('Dados enviados para a calculadora de caixa:', selectedGames);
-        // Lógica para enviar os dados para a calculadora de caixa
+        const selectedGames = this.selectedGames.map(gameId => {
+            return this.games.find(g => g.id === gameId);
+        }).filter(game => game !== undefined);
+
+        this.boxCalculator.onCalculate(selectedGames);
     }
 
     populateGameForm(): void {

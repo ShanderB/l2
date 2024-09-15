@@ -2,7 +2,7 @@
 <button (click)="toggleSelectionMode()" class="text-blue-500 hover:underline mb-4">
     {{ isSelectionMode ? 'Cancelar' : 'Enviar produtos' }}
 </button>
-<form [formGroup]="gameForm" (ngSubmit)="sendToBoxCalculator()">
+<form [formGroup]="gameForm">
     <div *ngFor="let game of games; let i = index" class="game-card bg-white shadow-md rounded-lg p-6 mb-6">
         <img [src]="game.coverImage" alt="{{ game.name }}" class="w-full h-auto rounded-lg mb-4">
         <h2 class="text-2xl font-semibold mb-2">{{ game.name }}</h2>
@@ -14,6 +14,7 @@
             <input type="checkbox" [value]="game" (change)="onCheckboxChange( game, $event)">
         </div>
     </div>
-    <button *ngIf="isSelectionMode" type="submit" class="text-blue-500 hover:underline">Finalizar envio</button>
+    <button *ngIf="isSelectionMode" type="submit" class="text-blue-500 hover:underline"
+        (click)="sendToBoxCalculator()">Finalizar envio</button>
 </form>
 <a routerLink="/add-game" class="text-blue-500 hover:underline">Adicionar Novo Jogo</a>
