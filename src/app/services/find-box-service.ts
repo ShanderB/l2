@@ -44,5 +44,3 @@ export function getBestBoxForDelivery(games: Game[], availableBoxes: AvailableBo
     }
     return selectedBoxes;
 }
-
-}
