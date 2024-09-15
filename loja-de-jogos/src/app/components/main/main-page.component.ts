@@ -3,6 +3,7 @@ import { GameService } from '../../services/game-service';
 import { Game } from '../../entities/game';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BoxCalculatorService } from '../box-calculator/box-calculator.service';
+import { AvailableBoxes } from '../../entities/available-boxes';
 
 @Component({
     selector: 'app-main-page',
@@ -15,6 +16,7 @@ export class MainPageComponent implements OnInit {
     isSelectionMode: boolean = true;
     selectedGames: string[] = [];
     errorMessage: string | null = null;
+    calculationResult: AvailableBoxes[] = [];
 
     constructor(private readonly gameService: GameService, private readonly fb: FormBuilder, private readonly boxCalculator: BoxCalculatorService) {
         this.gameForm = this.fb.group({
@@ -30,9 +32,10 @@ export class MainPageComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.games = this.gameService.getGames();
-        this.populateGameForm();
-
+        this.gameService.getAllGames().subscribe(games => {
+            this.games = games;
+            this.populateGameForm();
+        });
     }
 
     toggleSelectionMode(): void {
@@ -60,8 +63,10 @@ export class MainPageComponent implements OnInit {
         const result = this.boxCalculator.onCalculate(selectedGames);
 
         if (result.length === 0) {
-            this.errorMessage = "Não foi encontrado caixas para os jogos selecionados.";
+            this.errorMessage = "Existem jogos que não cabem nas caixas registradas.";
+            return;
         }
+        this.calculationResult = result;
     }
 
     populateGameForm(): void {

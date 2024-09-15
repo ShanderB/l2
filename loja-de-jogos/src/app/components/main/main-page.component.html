@@ -5,6 +5,10 @@
 <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
 </div>
+<div *ngIf="calculationResult">
+    <h3>Resultado da Calculadora de Caixas:</h3>
+    <pre>{{ calculationResult | json }}</pre>
+</div>
 <form [formGroup]="gameForm">
     <div *ngFor="let game of games; let i = index" class="game-card bg-white shadow-md rounded-lg p-6 mb-6">
         <img [src]="game.coverImage" alt="{{ game.name }}" class="w-full h-auto rounded-lg mb-4">
