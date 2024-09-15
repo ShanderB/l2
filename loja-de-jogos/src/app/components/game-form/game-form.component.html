@@ -1,18 +1,22 @@
 <form [formGroup]="gameForm">
     <div class="mb-4">
         <label for="preco" class="block text-gray-700 text-sm font-bold mb-2">Preço:</label>
-        <input formControlName="price" placeholder="Preço"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        <input type="text" inputmode="numeric" formControlName="price" placeholder="Preço"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            (input)="validateNumber($event)" />
     </div>
     <div class="mb-4">
         <label for="dimensao" class="block text-gray-700 text-sm font-bold mb-2">Dimensões da Caixa:</label>
         <div class="flex space-x-2">
-            <input formControlName="boxLength" placeholder="Comprimento"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-            <input formControlName="boxWidth" placeholder="Largura"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
-            <input formControlName="boxHeight" placeholder="Altura"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <input type="text" inputmode="numeric" formControlName="boxLength" placeholder="Comprimento"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                (input)="validateNumber($event)" />
+            <input type="text" inputmode="numeric" formControlName="boxWidth" placeholder="Largura"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                (input)="validateNumber($event)" />
+            <input type="text" inputmode="numeric" formControlName="boxHeight" placeholder="Altura"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                (input)="validateNumber($event)" />
         </div>
     </div>
     <div class="mb-4">
@@ -29,4 +33,7 @@
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cadastrar
         Jogo</button>
 </form>
+<div *ngIf="message" class="success-message">
+    {{ message }}
+</div>
 <a routerLink="/" class="text-blue-500 hover:underline">Voltar para Vitrine</a>
