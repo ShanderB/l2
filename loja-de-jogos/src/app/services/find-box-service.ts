@@ -49,8 +49,7 @@ function findMultipleBoxes(products: Game[], availableBoxes: AvailableBoxes[]): 
         }
 
         if (!boxFound) {
-  //TODO adicionar um erro caso a caixa seja muito grande.
-            throw new Error(`Não foi encontrado uma caixa capaz de acomodar o produto ${product.name}`);
+            return;
         }
     });
 

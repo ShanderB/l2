@@ -15,12 +15,15 @@ export class BoxCalculatorService {
         { height: 50, width: 50, length: 50 }
     ];
 
-    constructor() {}
+    constructor() { }
 
-    onCalculate(games: Game[]) {
+    onCalculate(games: Game[]): AvailableBoxes[] {
         const bestBoxes = getBestBoxForDelivery(games, this.availableBoxes);
-        //TODO adicionar algum tipo de retorno na tela.
-        console.log("Isso foi o resultado do calculo", games.map(game => ({ a: game.boxHeight, b: game.boxWidth, c: game.boxLength })));
-        console.log("Isso foi o resultado do calculo", bestBoxes);
+        if (bestBoxes.length === 0) {
+            return [];
+        }
+
+        return bestBoxes;
+
     }
 }

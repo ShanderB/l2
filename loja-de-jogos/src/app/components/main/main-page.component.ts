@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
     gameForm: FormGroup;
     isSelectionMode: boolean = true;
     selectedGames: string[] = [];
+    errorMessage: string | null = null;
 
     constructor(private readonly gameService: GameService, private readonly fb: FormBuilder, private readonly boxCalculator: BoxCalculatorService) {
         this.gameForm = this.fb.group({
@@ -54,9 +55,13 @@ export class MainPageComponent implements OnInit {
     sendToBoxCalculator(): void {
         const selectedGames = this.selectedGames.map(gameId => {
             return this.games.find(g => g.id === gameId);
-        }).filter(game => game !== undefined);
+        }).filter(game => game !== undefined) as Game[];
 
-        this.boxCalculator.onCalculate(selectedGames);
+        const result = this.boxCalculator.onCalculate(selectedGames);
+
+        if (result.length === 0) {
+            this.errorMessage = "Não foi encontrado caixas para os jogos selecionados.";
+        }
     }
 
     populateGameForm(): void {
