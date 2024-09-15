@@ -1,4 +1,4 @@
-<form [formGroup]="gameForm">
+<form [formGroup]="gameForm" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
     <div class="mb-4">
         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nome:</label>
         <textarea formControlName="name" placeholder="Nome"
@@ -38,7 +38,11 @@
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cadastrar
         Jogo</button>
 </form>
-<div *ngIf="message" class="success-message">
+<div *ngIf="message" class="success-message text-green-500 text-center mt-4">
     {{ message }}
 </div>
-<a routerLink="/" class="text-blue-500 hover:underline">Voltar para Vitrine</a>
+<div class="text-center mt-4">
+    <a routerLink="/"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline inline-block">Voltar
+        para Vitrine</a>
+</div>
