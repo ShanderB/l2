@@ -2,56 +2,47 @@ import { AvailableBoxes } from "../entities/available-boxes";
 import { Game } from "../entities/game";
 
 export function getBestBoxForDelivery(games: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
-    return findBestBox(games, availableBoxes)
-}
+    const selectedBoxes = [];
+    const totalDimensions = games.reduce((acc, game) => {
+        acc.height += game.boxHeight;
+        acc.width += game.boxWidth;
+        acc.length += game.boxLength;
+        return acc;
+    }, { height: 0, width: 0, length: 0 });
 
-function findBestBox(products: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
-    let totalHeight = 0;
-    let totalWidth = 0;
-    let totalLength = 0;
+    let remainingDimensions = { ...totalDimensions };
 
-    products.forEach(product => {
-        totalHeight += product.boxHeight;
-        totalWidth += product.boxWidth;
-        totalLength += product.boxLength;
-    });
+    const largestBox = availableBoxes.reduce((prev, curr) =>
+        (prev.height * prev.width * prev.length > curr.height * curr.width * curr.length) ? prev : curr
+    );
 
-    let bestBox: AvailableBoxes | null = null;
-    availableBoxes.forEach(box => {
-        if (box.height >= totalHeight && box.width >= totalWidth && box.length >= totalLength) {
-            if (!bestBox || (box.height * box.width * box.length < bestBox.height * bestBox.width * bestBox.length)) {
-                bestBox = box;
-            }
-        }
-    });
+    const largestGame = games.reduce((prev, curr) =>
+        (prev.boxHeight * prev.boxWidth * prev.boxLength > curr.boxHeight * curr.boxWidth * curr.boxLength) ? prev : curr
+    );
 
-    if (bestBox) {
-        return [bestBox];
+    if(largestBox.height < largestGame.boxHeight || largestBox.width < largestGame.boxWidth || largestBox.length < largestGame.boxLength){
+        return [];
     }
 
-    return findMultipleBoxes(products, availableBoxes);
+
+    while (remainingDimensions.height > 0 || remainingDimensions.width > 0 || remainingDimensions.length > 0) {
+        const box = availableBoxes.find(box =>
+            box.height >= remainingDimensions.height &&
+            box.width >= remainingDimensions.width &&
+            box.length >= remainingDimensions.length
+        );
+
+        if (box) {
+            selectedBoxes.push(box);
+            remainingDimensions = { height: 0, width: 0, length: 0 };
+        } else {
+            selectedBoxes.push(largestBox);
+            remainingDimensions.height -= largestBox.height;
+            remainingDimensions.width -= largestBox.width;
+            remainingDimensions.length -= largestBox.length;
+        }
+    }
+    return selectedBoxes;
 }
 
-function findMultipleBoxes(products: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
-    availableBoxes.sort((a, b) => (a.height * a.width * a.length) - (b.height * b.width * b.length));
-
-    const usedBoxes: AvailableBoxes[] = [];
-
-    products.forEach(product => {
-        let boxFound = false;
-
-        for (let box of availableBoxes) {
-            if (box.height >= product.boxHeight && box.width >= product.boxWidth && box.length >= product.boxLength) {
-                usedBoxes.push(box);
-                boxFound = true;
-                break;
-            }
-        }
-
-        if (!boxFound) {
-            return;
-        }
-    });
-
-    return usedBoxes;
 }
