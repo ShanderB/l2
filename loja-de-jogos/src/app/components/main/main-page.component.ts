@@ -40,6 +40,9 @@ export class MainPageComponent implements OnInit {
 
     toggleSelectionMode(): void {
         this.isSelectionMode = !this.isSelectionMode;
+        this.selectedGames = [];
+        this.errorMessage = null;
+        this.calculationResult = [];
     }
 
     onCheckboxChange(game: Game, event: Event): void {
@@ -59,6 +62,11 @@ export class MainPageComponent implements OnInit {
         const selectedGames = this.selectedGames.map(gameId => {
             return this.games.find(g => g.id === gameId);
         }).filter(game => game !== undefined) as Game[];
+
+        if (selectedGames.length === 0) {
+            this.errorMessage = "Selecione algum jogo.";
+            return;
+        }
 
         const result = this.boxCalculator.onCalculate(selectedGames);
 

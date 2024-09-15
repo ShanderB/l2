@@ -5,7 +5,7 @@
 <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
 </div>
-<div *ngIf="calculationResult">
+<div *ngIf="calculationResult.length > 0">
     <h3>Resultado da Calculadora de Caixas:</h3>
     <pre>{{ calculationResult | json }}</pre>
 </div>
