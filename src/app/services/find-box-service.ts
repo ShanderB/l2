@@ -2,7 +2,7 @@ import { AvailableBoxes } from "../entities/available-boxes";
 import { Game } from "../entities/game";
 
 export function getBestBoxForDelivery(games: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
-   return findBestBox(games, availableBoxes)
+    return findBestBox(games, availableBoxes)
 }
 
 function findBestBox(products: Game[], availableBoxes: AvailableBoxes[]): AvailableBoxes[] {
@@ -26,7 +26,7 @@ function findBestBox(products: Game[], availableBoxes: AvailableBoxes[]): Availa
     });
 
     if (bestBox) {
-        return bestBox;
+        return [bestBox];
     }
 
     return findMultipleBoxes(products, availableBoxes);
