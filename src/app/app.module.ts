@@ -14,12 +14,14 @@ import { MainPageComponent } from './components/main/main-page.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { GameService } from './services/game-service';
+import { GameCardComponent } from './components/game-card/game-card.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         GameFormComponent,
-        MainPageComponent
+        MainPageComponent,
+        GameCardComponent
     ],
     imports: [
         BrowserModule,
