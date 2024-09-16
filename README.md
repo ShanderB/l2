@@ -25,9 +25,10 @@ Node.JS (^20.15.0)
 ## Guia
 
 - O projeto inicia com 3 games mockados.
-<br>
+
 - Na parte inferior existe o botão de cadastrar novos games, que serão persistidos pela sessão.
 - Não é permitido a inserção de valores não numéricos  nos campos de número. O campo de imagem existe mas por conveniência não é utilizado. Ao cadastrar um produto o código seleciona aleatoriamente uma imagem existente.
+
 <br><br>
 
 - Se clicado em `Enviar Produto`, será habilitado um botão toggle para selecionar os objetos para envio. Selecione-os e clique em `Finalizar Envio`.
