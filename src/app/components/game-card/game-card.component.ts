@@ -15,12 +15,11 @@ export class GameCardComponent {
     selectedGames: string[] = [];
     errorMessage: string = "";
     games: Game[] = [];
-    calculationResult: AvailableBoxes[] = [];
     gameForm: FormGroup;
     isSelectionMode: boolean = true;
+    calculationResult: AvailableBoxes[] = [];
 
     constructor(
-        private readonly boxCalculator: BoxCalculatorService,
         private readonly fb: FormBuilder,
         private readonly gameService: GameService
     ) {
@@ -43,9 +42,7 @@ export class GameCardComponent {
         });
     }
 
-
     onCheckboxChange(game: Game, event: Event): void {
-
         const inputElement = (event.target as HTMLInputElement)
         const isChecked = inputElement.checked;
 
@@ -55,26 +52,6 @@ export class GameCardComponent {
             const index = this.selectedGames.findIndex(x => x === game.id);
             this.selectedGames.splice(index, 1);
         }
-    }
-
-
-    sendToBoxCalculator(): void {
-        const selectedGames = this.selectedGames.map(gameId => {
-            return this.games.find(g => g.id === gameId);
-        }).filter(game => game !== undefined) as Game[];
-
-        if (selectedGames.length === 0) {
-            this.errorMessage = "Selecione algum jogo.";
-            return;
-        }
-
-        const result = this.boxCalculator.onCalculate(selectedGames);
-
-        if (result.length === 0) {
-            this.errorMessage = "Existem jogos que não cabem nas caixas registradas.";
-            return;
-        }
-        this.calculationResult = result;
     }
 
     populateGameForm(): void {
@@ -97,5 +74,13 @@ export class GameCardComponent {
         /*     this.selectedGames = [];
             this.errorMessage = null;
             this.calculationResult = []; */
+    }
+
+    handleErrorMessage(errorMessage: string): void {
+        this.errorMessage = errorMessage
+    }
+
+    handleCalculationResult(box: AvailableBoxes[]): void {
+        this.calculationResult = box
     }
 }

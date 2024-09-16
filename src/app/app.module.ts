@@ -19,6 +19,7 @@ import { NavigationButtonComponent } from './components/navigation-button/naviga
 import { RouterComponent } from './components/navigation-button/router/router.component';
 import { ResultBoxComponent } from './components/game-card/result-box/result-box.component';
 import { ErrorCardComponent } from './components/game-card/error-card/error-card.component';
+import { FinalizeButtonComponent } from './components/game-card/finalize-button/finalize-button.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { ErrorCardComponent } from './components/game-card/error-card/error-card
         NavigationButtonComponent,
         RouterComponent,
         ResultBoxComponent,
-        ErrorCardComponent
+        ErrorCardComponent,
+        FinalizeButtonComponent
     ],
     imports: [
         BrowserModule,
