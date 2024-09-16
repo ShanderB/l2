@@ -17,6 +17,7 @@ import { GameService } from './services/game-service';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { RouterComponent } from './components/navigation-button/router/router.component';
+import { ResultBoxComponent } from './components/game-card/result-box/result-box.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { RouterComponent } from './components/navigation-button/router/router.co
         MainPageComponent,
         GameCardComponent,
         NavigationButtonComponent,
-        RouterComponent
+        RouterComponent,
+        ResultBoxComponent
     ],
     imports: [
         BrowserModule,

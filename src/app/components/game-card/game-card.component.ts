@@ -12,7 +12,6 @@ import { GameService } from "../../services/game-service";
 })
 
 export class GameCardComponent {
-
     selectedGames: string[] = [];
     errorMessage: string | null = null;
     games: Game[] = [];
@@ -20,9 +19,11 @@ export class GameCardComponent {
     gameForm: FormGroup;
     isSelectionMode: boolean = true;
 
-
-    constructor(private readonly boxCalculator: BoxCalculatorService, private readonly fb: FormBuilder, private readonly gameService: GameService) {
-
+    constructor(
+        private readonly boxCalculator: BoxCalculatorService,
+        private readonly fb: FormBuilder,
+        private readonly gameService: GameService
+    ) {
         this.gameForm = this.fb.group({
             id: [''],
             name: ['', Validators.required],
