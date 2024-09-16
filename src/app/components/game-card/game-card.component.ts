@@ -16,7 +16,7 @@ export class GameCardComponent {
     errorMessage: string = "";
     games: Game[] = [];
     gameForm: FormGroup;
-    isSelectionMode: boolean = true;
+    isSelectionMode: boolean = false;
     calculationResult: AvailableBoxes[] = [];
 
     constructor(
