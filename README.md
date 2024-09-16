@@ -1,6 +1,6 @@
 ## Objetivo
 
-Projeto feito para vaga Angular pleno da L2Code.
+Projeto feito para vaga Angular da L2Code.
 
 ## Requisitos
 
