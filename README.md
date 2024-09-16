@@ -37,3 +37,4 @@ Node.JS (^20.15.0)
 - Será calculado quais caixas devem ser utilizadas ao clicar no botão de finalizar. Inicialmente está funcional porém não todas as situações. Um exemplo é utilizar os games na medida `50x50x50, 40x40x40, 10x10x10`. O resultado deveria ser duas caixas de `50x50x50`. Eu consegui criar o código para cobrir essa situação, mas a maior parte das outras situações não funcionava. O mesmo ao contrário, quando arrumado as outras situações, não funcionava para múltiplas caixas.
 
 - Para facilitar a codificação, crie um código de testes bem simples. Caso queira usar, é o arquivo `test`. Lá existe um simples guia de como utilizar.
+- Seria mais prático utilizar um Jest ou Jasmine, mas devido ao tempo não fiz a criação disso mas utilizo a 4 anos.
