@@ -1,8 +1,5 @@
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-bold mb-6 text-center">Vitrine de Jogos</h1>
     <app-game-card></app-game-card>
-    <div class="flex justify-center">
-        <a routerLink="/add-game" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Adicionar Novo
-            Jogo</a>
-    </div>
+    <app-navigation-button [text]="'Adicionar Novo Jogo'" [route]="'/add-game'"></app-navigation-button>
 </div>

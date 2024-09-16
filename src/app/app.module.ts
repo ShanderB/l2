@@ -15,13 +15,17 @@ import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { GameService } from './services/game-service';
 import { GameCardComponent } from './components/game-card/game-card.component';
+import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
+import { RouterComponent } from './components/navigation-button/router/router.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         GameFormComponent,
         MainPageComponent,
-        GameCardComponent
+        GameCardComponent,
+        NavigationButtonComponent,
+        RouterComponent
     ],
     imports: [
         BrowserModule,
