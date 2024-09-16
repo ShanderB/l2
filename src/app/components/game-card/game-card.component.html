@@ -3,9 +3,7 @@
         {{ isSelectionMode ? 'Cancelar' : 'Enviar produtos' }}
     </button>
 </div>
-<div *ngIf="errorMessage" class="error-message text-red-500 text-center mb-4">
-    {{ errorMessage }}
-</div>
+<app-error-card [errorMessage]="errorMessage"></app-error-card>
 <app-result-box [calculationResult]="calculationResult"></app-result-box>
 <form [formGroup]="gameForm" class="flex flex-wrap justify-center">
     <div *ngFor="let game of games; let i = index"

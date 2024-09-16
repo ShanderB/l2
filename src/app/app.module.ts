@@ -18,6 +18,7 @@ import { GameCardComponent } from './components/game-card/game-card.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { RouterComponent } from './components/navigation-button/router/router.component';
 import { ResultBoxComponent } from './components/game-card/result-box/result-box.component';
+import { ErrorCardComponent } from './components/game-card/error-card/error-card.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { ResultBoxComponent } from './components/game-card/result-box/result-box
         GameCardComponent,
         NavigationButtonComponent,
         RouterComponent,
-        ResultBoxComponent
+        ResultBoxComponent,
+        ErrorCardComponent
     ],
     imports: [
         BrowserModule,

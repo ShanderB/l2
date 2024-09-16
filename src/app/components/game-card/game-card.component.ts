@@ -13,7 +13,7 @@ import { GameService } from "../../services/game-service";
 
 export class GameCardComponent {
     selectedGames: string[] = [];
-    errorMessage: string | null = null;
+    errorMessage: string = "";
     games: Game[] = [];
     calculationResult: AvailableBoxes[] = [];
     gameForm: FormGroup;
